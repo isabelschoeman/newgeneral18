@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.Range;
 /**
  * Created by AnnabelleButtenwieser on 9/21/17.
  */
-//@Disabled
+
 @TeleOp(name="laeo_is_better", group="Iterative Opmode")
 public class Ava extends OpMode {
 
@@ -188,7 +188,7 @@ public class Ava extends OpMode {
 
 
         if (gamepad2.b) {
-            Servo1.setPosition(0.35);
+            Servo1.setPosition(0.3);
             //Servo2.setPosition(0.3);
         } else if (gamepad2.x) {
             Servo1.setPosition(0.5);
@@ -202,7 +202,7 @@ public class Ava extends OpMode {
 
             //lift
 
-        if (gamepad2.dpad_up) {
+        if (gamepad1.dpad_up) {
             Pulley.setPower(.9);
         } else if (gamepad1.dpad_down) {
             Pulley.setPower(-.9);
