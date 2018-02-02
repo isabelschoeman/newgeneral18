@@ -22,8 +22,8 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
 
-@Autonomous(name = "Blue 1", group = "Sensor")
-public class PTRed1 extends LinearOpMode {
+@Autonomous(name = "Red 2", group = "Sensor")
+public class PTRed2 extends LinearOpMode {
 
     /**
      * Note that the REV Robotics Color-Distance incorporates two sensors into one device.
@@ -116,9 +116,9 @@ public class PTRed1 extends LinearOpMode {
 
             //clamp on block
             //Lift lift
-           // Pulley.setPower(.9);
-           // delay(500);
-           // Pulley.setPower(0);
+            // Pulley.setPower(.9);
+            // delay(500);
+            // Pulley.setPower(0);
 
             colorServo.setPosition(0);
 
@@ -155,7 +155,7 @@ public class PTRed1 extends LinearOpMode {
                 turnLeft(.4, 250);
                 delay(800);
                 moveForward(.4,1000);
-                turnRight(.4,600);
+                turnRight(.4,1200);
                 delay(500);
                 //moveForward(.4, 750);
                 Servo1.setPosition(0.9);
@@ -177,7 +177,7 @@ public class PTRed1 extends LinearOpMode {
                 turnRight(.4, 500);
                 delay(800);
                 moveForward(.4,1000);
-                turnRight(.4,600);
+                turnRight(.4,1200    );
                 delay(500);
                 //moveBackward(.4, 70);
                 //delay(500);

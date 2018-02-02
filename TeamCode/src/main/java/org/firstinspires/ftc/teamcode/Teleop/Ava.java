@@ -33,7 +33,7 @@ public class Ava extends OpMode {
     //private Servo ServoHand = null;
     //private Servo ServoElbow = null;
     //private DcMotor ThiccBoiRetriever= null;
-    //private Servo colorServo = null;
+    private Servo colorServo = null;
     double startTime = runtime.milliseconds();
 
     @Override
@@ -57,7 +57,7 @@ public class Ava extends OpMode {
         //ServoRelicRelease = hardwareMap.get(Servo.class, "ServoRelicRelease");
         //ServoHand = hardwareMap.get(Servo.class, "ServoHand");
         //ServoElbow = hardwareMap.get(Servo.class, "ServoElbow");
-        //colorServo = hardwareMap.get(Servo.class, "colorServo");
+        colorServo = hardwareMap.get(Servo.class, "colorServo");
 
 
         // Most robots need the motor on one side to be reversed to drive forward
@@ -265,6 +265,7 @@ public class Ava extends OpMode {
             colorServo.setPosition(0.95);
         }
         */
+        colorServo.setPosition(0.95);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
