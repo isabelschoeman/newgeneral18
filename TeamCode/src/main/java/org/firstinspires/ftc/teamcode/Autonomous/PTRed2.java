@@ -149,22 +149,20 @@ public class PTRed2 extends LinearOpMode {
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 250);
+                turnLeft(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.7);
-                turnLeft(.4, 250);
+                turnRight(.4, 150);
                 delay(800);
-                moveForward(.4,750);
-                turnLeft(.4,1500);
-                delay(500);
-                strafeLeft(.4, 1500);
+                moveBackward(.4,750);
+                strafeRight(.4, 1500);
                 delay(500);
                 //moveForward(.4, 750);
                 Servo1.setPosition(0.9);
                 delay(500);
                 moveBackward(.4,1000);
                 delay(250);
-                moveForward(.4, 250);
+                moveForward(.4, 300);
                 Servo1.setPosition(0.3);
                 //delay(250);
                 //moveForward(.4, 350);
@@ -173,15 +171,13 @@ public class PTRed2 extends LinearOpMode {
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 250);
+                turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.95);
-                turnRight(.4, 500);
+                turnLeft(.4, 150);
                 delay(800);
-                moveForward(.4,750);
-                turnLeft(.4,1500);
-                delay(500);
-                strafeLeft(.4, 1100);
+                moveBackward(.4,750);
+                strafeRight(.4, 1500);
                 delay(500);
                 //moveBackward(.4, 70);
                 //delay(500);
@@ -189,7 +185,7 @@ public class PTRed2 extends LinearOpMode {
                 delay(500);
                 moveBackward(.4,1000);
                 delay(250);
-                moveForward(.4, 250);
+                moveForward(.4, 300);
                 delay(250);
                 Servo1.setPosition(0.3);
                 //delay(250);

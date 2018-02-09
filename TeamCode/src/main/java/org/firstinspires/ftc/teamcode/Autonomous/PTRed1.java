@@ -22,7 +22,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
 
-@Autonomous(name = "Blue 1", group = "Sensor")
+@Autonomous(name = "Red 1", group = "Sensor")
 public class PTRed1 extends LinearOpMode {
 
     /**
@@ -149,13 +149,13 @@ public class PTRed1 extends LinearOpMode {
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 250);
+                turnLeft(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.95);
-                turnLeft(.4, 250);
+                turnRight(.4, 150);
                 delay(800);
-                moveForward(.4,1000);
-                turnRight(.4,600);
+                strafeRight(.4,1000);
+                moveBackward(.4,100);
                 delay(500);
                 //moveForward(.4, 750);
                 Servo1.setPosition(0.9);
@@ -171,13 +171,13 @@ public class PTRed1 extends LinearOpMode {
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 250);
+                turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.95);
-                turnRight(.4, 500);
+                turnLeft(.4, 150);
                 delay(800);
-                moveForward(.4,1000);
-                turnRight(.4,600);
+                strafeRight(.4,1000);
+                moveBackward(.4,100);
                 delay(500);
                 //moveBackward(.4, 70);
                 //delay(500);
@@ -262,9 +262,9 @@ public class PTRed1 extends LinearOpMode {
     }
 
     public void strafeRight(double power, int time){
-        FrontLeft.setPower(power);
+        FrontLeft.setPower(-power);
         FrontRight.setPower(-power);
-        BackLeft.setPower(-power);
+        BackLeft.setPower(power);
         BackRight.setPower(power);
         delay(time);
         FrontLeft.setPower(0);
@@ -273,9 +273,9 @@ public class PTRed1 extends LinearOpMode {
         BackRight.setPower(0);
     }
     public void strafeLeft(double power, int time){
-        FrontLeft.setPower(-power);
+        FrontLeft.setPower(power);
         FrontRight.setPower(power);
-        BackLeft.setPower(power);
+        BackLeft.setPower(-power);
         BackRight.setPower(-power);
         delay(time);
         FrontLeft.setPower(0);

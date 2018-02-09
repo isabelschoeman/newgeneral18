@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.robotcontroller.external.samples;
+package org.firstinspires.ftc.teamcode.Teleop;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -14,7 +14,7 @@ import com.qualcomm.robotcore.util.Range;
  * Created by AnnabelleButtenwieser on 9/21/17.
  */
 
-@TeleOp(name="laeo_is_better", group="Iterative Opmode")
+@TeleOp(name="laeo_is_better02", group="Iterative Opmode")
 public class Ava extends OpMode {
 
     // Declare OpMode members.
@@ -104,6 +104,7 @@ public class Ava extends OpMode {
 
     public void loop() {
         double threshold = 0.5;
+        double slowNumber = 0.75;
 
         if (gamepad1.right_stick_x < -threshold || gamepad1.right_stick_x > threshold) {
             if(gamepad1.left_bumper){
@@ -113,10 +114,10 @@ public class Ava extends OpMode {
                 BackRight.setPower(gamepad1.right_stick_x/2);
             }
             else{
-                FrontLeft.setPower(-gamepad1.right_stick_x);
-                FrontRight.setPower(-gamepad1.right_stick_x);
-                BackLeft.setPower(gamepad1.right_stick_x);
-                BackRight.setPower(gamepad1.right_stick_x);
+                FrontLeft.setPower(-gamepad1.right_stick_x*slowNumber);
+                FrontRight.setPower(-gamepad1.right_stick_x*slowNumber);
+                BackLeft.setPower(gamepad1.right_stick_x*slowNumber);
+                BackRight.setPower(gamepad1.right_stick_x*slowNumber);
             }
 
         } else if (gamepad1.left_stick_y < -threshold || gamepad1.left_stick_y > threshold || gamepad1.left_stick_x < -threshold || gamepad1.left_stick_x > threshold) {
@@ -136,10 +137,10 @@ public class Ava extends OpMode {
                     FrontRight.setPower(rightPower/2);
                     BackRight.setPower(rightPower/2);
                 }else{
-                    FrontLeft.setPower(leftPower);
-                    BackLeft.setPower(leftPower);
-                    FrontRight.setPower(rightPower);
-                    BackRight.setPower(rightPower);
+                    FrontLeft.setPower(leftPower*slowNumber);
+                    BackLeft.setPower(leftPower*slowNumber);
+                    FrontRight.setPower(rightPower*slowNumber);
+                    BackRight.setPower(rightPower*slowNumber);
                 }
 
             } else {
@@ -196,15 +197,18 @@ public class Ava extends OpMode {
         } else if (gamepad2.y) {
             Servo1.setPosition(0.9);
             //Servo2.setPosition(0.7);
+        } else if (gamepad2.a) {
+            Servo1.setPosition(0.4);
+            //Servo2.setPosition(0.7);
         }else{
 
         }
 
             //lift
 
-        if (gamepad1.dpad_up) {
+        if (gamepad2.dpad_up) {
             Pulley.setPower(.9);
-        } else if (gamepad1.dpad_down) {
+        } else if (gamepad2.dpad_down) {
             Pulley.setPower(-.9);
         } else {
             Pulley.setPower(0);

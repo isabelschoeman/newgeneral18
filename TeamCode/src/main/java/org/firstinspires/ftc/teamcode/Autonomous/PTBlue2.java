@@ -22,7 +22,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
 
-@Autonomous(name = "Blue 22", group = "Sensor")
+@Autonomous(name = "Blue 2", group = "Sensor")
 public class PTBlue2 extends LinearOpMode {
 
     /**
@@ -149,13 +149,13 @@ public class PTBlue2 extends LinearOpMode {
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 250);
+                turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.7);
-                turnRight(.4, 250);
+                turnLeft(.4, 150);
                 delay(800);
                 moveBackward(.4,750);
-                strafeRight(.4, 1500);
+                strafeLeft(.4, 1500);
                 delay(500);
                 //moveForward(.4, 750);
                 Servo1.setPosition(0.9);
@@ -171,13 +171,13 @@ public class PTBlue2 extends LinearOpMode {
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 250);
+                turnLeft(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.95);
-                turnLeft(.4, 500);
+                turnRight(.4, 150);
                 delay(800);
                 moveBackward(.4,750);
-                strafeRight(.4, 1500);
+                strafeLeft(.4, 1500);
                 delay(500);
                 //moveBackward(.4, 70);
                 //delay(500);
