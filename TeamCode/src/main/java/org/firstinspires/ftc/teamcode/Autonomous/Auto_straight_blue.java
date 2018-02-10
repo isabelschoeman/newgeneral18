@@ -26,7 +26,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 import java.util.Locale;
 
-@Autonomous(name = "BLUE 2", group = "Sensor")
+@Autonomous(name = "no BLUE 2", group = "Sensor")
 public class Auto_straight_blue extends LinearOpMode {
     ColorSensor colorSensor;
     private ElapsedTime runtime = new ElapsedTime();

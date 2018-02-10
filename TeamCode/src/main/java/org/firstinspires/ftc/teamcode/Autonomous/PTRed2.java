@@ -151,13 +151,12 @@ public class PTRed2 extends LinearOpMode {
                 telemetry.update();
                 turnLeft(.4, 150);
                 delay(100);
-                colorServo.setPosition(0.7);
+                colorServo.setPosition(0.95);
                 turnRight(.4, 150);
                 delay(800);
-                moveBackward(.4,750);
-                strafeRight(.4, 1500);
+                moveBackward(.4,1000);
+                strafeRight(.4, 975);
                 delay(500);
-                //moveForward(.4, 750);
                 Servo1.setPosition(0.9);
                 delay(500);
                 moveBackward(.4,1000);
@@ -176,22 +175,15 @@ public class PTRed2 extends LinearOpMode {
                 colorServo.setPosition(0.95);
                 turnLeft(.4, 150);
                 delay(800);
-                moveBackward(.4,750);
-                strafeRight(.4, 1500);
+                moveBackward(.4,1000);
+                strafeRight(.4, 975);
                 delay(500);
-                //moveBackward(.4, 70);
-                //delay(500);
                 Servo1.setPosition(0.9);
                 delay(500);
                 moveBackward(.4,1000);
                 delay(250);
                 moveForward(.4, 300);
-                delay(250);
                 Servo1.setPosition(0.3);
-                //delay(250);
-                //moveForward(.4, 350);
-                //delay(500);
-                //moveBackward(.4,250);
             }
 
             break;
