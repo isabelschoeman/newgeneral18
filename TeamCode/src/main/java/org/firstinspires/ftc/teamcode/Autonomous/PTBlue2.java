@@ -180,7 +180,7 @@ public class PTBlue2 extends LinearOpMode {
                 strafeRight(.4, 1000);
                 turnRight(.4, 1600);
                 delay(500);
-                Servo1.setPosition(0.3);
+                Servo1.setPosition(0.9);
                 moveBackward(.4,1000);
                 delay(250);
                 moveForward(.4, 300);

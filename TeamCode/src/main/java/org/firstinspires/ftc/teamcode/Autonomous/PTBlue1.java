@@ -123,7 +123,6 @@ public class PTBlue1 extends LinearOpMode {
             colorServo.setPosition(0);
             nom(.9);
 
-
             int red = 0;
             int blue = 0;
             int count = 0;
@@ -168,19 +167,29 @@ public class PTBlue1 extends LinearOpMode {
                 delay(500);
                 Servo1.setPosition(0.3);
 
-                strafeLeft(.4,1100);
+                strafeLeft(.4,1200);
                 delay(500);
                 moveForward(.4, 1750);
                 delay(500);
-                moveBackward(.4, 1250);
+                moveBackward(.4, 200);
+                delay(500);
+                moveForward(.4, 700);
+                delay(500);
+                moveBackward(.4, 1500);
+                delay(500);
+                strafeLeft(.4, 200);
+                delay(500);
+                Servo1.setPosition(0.5);
                 delay(500);
                 Servo1.setPosition(0.9);
                 delay(500);
-                moveBackward(.4, 250);
+                moveBackward(.4, 750);
                 delay(500);
                 moveForward(.4, 250);
                 Servo1.setPosition(.3);
                 delay(500);
+
+
 
                 //delay(250);
                 //moveForward(.4, 350);
@@ -207,21 +216,27 @@ public class PTBlue1 extends LinearOpMode {
                 Servo1.setPosition(.3);
                 delay(500);
 
-                strafeLeft(.4, 1100);
+                strafeLeft(.4,1200);
                 delay(500);
                 moveForward(.4, 1750);
                 delay(500);
-                moveBackward(.4, 1250);
+                moveBackward(.4, 200);
+                delay(500);
+                moveForward(.4, 700);
+                delay(500);
+                moveBackward(.4, 1500);
+                delay(500);
+                strafeLeft(.4, 200);
+                delay(500);
+                Servo1.setPosition(0.5);
                 delay(500);
                 Servo1.setPosition(0.9);
                 delay(500);
-                moveBackward(.4, 250);
+                moveBackward(.4, 750);
                 delay(500);
-                moveForward(.4, 250);
-                Servo1.setPosition(0);
+                moveForward(.4,250);
+                Servo1.setPosition(.3);
                 delay(500);
-
-
 
             }
 

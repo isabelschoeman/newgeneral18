@@ -121,6 +121,7 @@ public class PTRed1 extends LinearOpMode {
            // Pulley.setPower(0);
 
             colorServo.setPosition(0);
+            nom(.9);
 
             int red = 0;
             int blue = 0;
@@ -154,14 +155,39 @@ public class PTRed1 extends LinearOpMode {
                 colorServo.setPosition(0.95);
                 turnRight(.4, 150);
                 delay(800);
-                moveBackward(.4,1150);
-                turnRight(.4,800);
+                moveBackward(.4,1000);
+                turnRight(.4,750);
                 delay(500);
                 Servo1.setPosition(0.9);
-                moveBackward(.4,500);
                 delay(250);
-                moveForward(.4, 250);
+                moveForward(.4,500);
+                delay(500);
+                moveBackward(.4,750);
+                delay(250);
+                moveForward(.4, 200);
+                delay(250);
                 Servo1.setPosition(0.3);
+                delay(250);
+
+                strafeRight(.4,925);
+                delay(500);
+                moveForward(.4, 1750);
+                delay(500);
+                moveBackward(.4, 200);
+                delay(500);
+                moveForward(.4, 700);
+                delay(500);
+                moveBackward(.4, 1500);
+                delay(500);
+                Servo1.setPosition(0.5);
+                delay(500);
+                Servo1.setPosition(0.9);
+                delay(500);
+                moveBackward(.4, 1000);
+                delay(500);
+                moveForward(.4,250);
+                Servo1.setPosition(.3);
+
                 //delay(250);
                 //moveForward(.4, 350);
                 //delay(500);
@@ -174,14 +200,40 @@ public class PTRed1 extends LinearOpMode {
                 colorServo.setPosition(0.95);
                 turnLeft(.4, 150);
                 delay(800);
-                moveBackward(.4,1150);
-                turnRight(.4,800);
+                moveBackward(.4,1000);
+                turnRight(.4,750);
                 delay(500);
                 Servo1.setPosition(0.9);
-                moveBackward(.4,500);
                 delay(250);
-                moveForward(.4, 250);
+                moveForward(.4,500);
+                delay(500);
+                moveBackward(.4,750);
+                delay(250);
+                moveForward(.4, 200);
+                delay(250);
                 Servo1.setPosition(0.3);
+                delay(250);
+
+                strafeRight(.4,925);
+                delay(500);
+                moveForward(.4, 1750);
+                delay(500);
+                moveBackward(.4, 200);
+                delay(500);
+                moveForward(.4, 700);
+                delay(500);
+                moveBackward(.4, 1500);
+                delay(500);
+                Servo1.setPosition(0.5);
+                delay(500);
+                Servo1.setPosition(0.9);
+                delay(500);
+                moveBackward(.4, 1000);
+                delay(500);
+                moveForward(.4,250);
+                delay(250);
+                Servo1.setPosition(.3);
+
                 //delay(250);
                 //moveForward(.4, 350);
                 //delay(500);
@@ -298,5 +350,10 @@ public class PTRed1 extends LinearOpMode {
         FrontRight.setPower(0);
         BackLeft.setPower(0);
         BackRight.setPower(0);
+    }
+    public void nom(double power){
+        NomRight.setPower(power);
+        NomLeft.setPower(power);
+
     }
 }
