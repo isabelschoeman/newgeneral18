@@ -114,10 +114,10 @@ public class Ava extends OpMode {
                 BackRight.setPower(gamepad1.right_stick_x/2);
             }
             else{
-                FrontLeft.setPower(-gamepad1.right_stick_x*slowNumber);
-                FrontRight.setPower(-gamepad1.right_stick_x*slowNumber);
-                BackLeft.setPower(gamepad1.right_stick_x*slowNumber);
-                BackRight.setPower(gamepad1.right_stick_x*slowNumber);
+                FrontLeft.setPower(-gamepad1.right_stick_x);
+                FrontRight.setPower(-gamepad1.right_stick_x);
+                BackLeft.setPower(gamepad1.right_stick_x);
+                BackRight.setPower(gamepad1.right_stick_x);
             }
 
         } else if (gamepad1.left_stick_y < -threshold || gamepad1.left_stick_y > threshold || gamepad1.left_stick_x < -threshold || gamepad1.left_stick_x > threshold) {
