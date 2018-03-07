@@ -189,13 +189,13 @@ public class Ava extends OpMode {
 
 
         if (gamepad2.b) {
-            Servo1.setPosition(0.3);
+            Servo1.setPosition(0.1);
             //Servo2.setPosition(0.3);
         } else if (gamepad2.x) {
-            Servo1.setPosition(0.5);
+            Servo1.setPosition(0.3);
             //Servo2.setPosition(0.6);
         } else if (gamepad2.y) {
-            Servo1.setPosition(0.9);
+            Servo1.setPosition(0.7);
             //Servo2.setPosition(0.7);
         } else if (gamepad2.a) {
             Servo1.setPosition(0.4);
@@ -269,7 +269,7 @@ public class Ava extends OpMode {
             colorServo.setPosition(0.95);
         }
         */
-        colorServo.setPosition(0.95);
+        colorServo.setPosition(0.5);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
