@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Teleop;
 
-
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -9,14 +8,16 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
 
 /**
- * Created by AnnabelleButtenwieser on 9/21/17.
+ * Created by student on 3/7/18.
  */
-
-@TeleOp(name="laeo_is_better02", group="Iterative Opmode")
-public class Ava extends OpMode {
-
+@TeleOp(name="laeo_lanBro", group="Iterative Opmode")
+public class Laeo_lanbro extends OpMode{
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor FrontLeft = null;
@@ -104,7 +105,7 @@ public class Ava extends OpMode {
 
     public void loop() {
         double threshold = 0.5;
-        double slowNumber = 0.75;
+        double slowNumber = 0.95;
 
         if (gamepad1.right_stick_x < -threshold || gamepad1.right_stick_x > threshold) {
             if(gamepad1.left_bumper){
@@ -114,9 +115,9 @@ public class Ava extends OpMode {
                 BackRight.setPower(gamepad1.right_stick_x/2);
             }
             else{
-                FrontLeft.setPower(gamepad1.right_stick_x);
+                FrontLeft.setPower(-gamepad1.right_stick_x);
                 FrontRight.setPower(-gamepad1.right_stick_x);
-                BackLeft.setPower(-gamepad1.right_stick_x);
+                BackLeft.setPower(gamepad1.right_stick_x);
                 BackRight.setPower(gamepad1.right_stick_x);
             }
 
@@ -188,33 +189,33 @@ public class Ava extends OpMode {
         //Servo Stuff
 
 
-        if (gamepad2.b) {
+        if (gamepad1.b) {
             Servo1.setPosition(0.1);
             //Servo2.setPosition(0.3);
-        } else if (gamepad2.x) {
+        } else if (gamepad1.x) {
             Servo1.setPosition(0.3);
             //Servo2.setPosition(0.6);
-        } else if (gamepad2.y) {
+        } else if (gamepad1.y) {
             Servo1.setPosition(0.5);
             //Servo2.setPosition(0.7);
-        } else if (gamepad2.a) {
+        } else if (gamepad1.a) {
             Servo1.setPosition(0.4);
             //Servo2.setPosition(0.7);
         }else{
 
         }
 
-            //lift
+        //lift
 
-        if (gamepad2.dpad_up) {
+        if (gamepad1.dpad_up) {
             Pulley.setPower(.9);
-        } else if (gamepad2.dpad_down) {
+        } else if (gamepad1.dpad_down) {
             Pulley.setPower(-.9);
         } else {
             Pulley.setPower(0);
         }
 
-            //relic placer
+        //relic placer
 /*
         if(gamepad1.right_trigger > .4){
             ThiccBoiPlacer.setPower(.55);
@@ -271,9 +272,9 @@ public class Ava extends OpMode {
         */
         colorServo.setPosition(0.5);
 
-            // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.update();
+        // Show the elapsed game time and wheel power.
+        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.update();
     /*
      * Code to run ONCE after the driver hits STOP
      */
