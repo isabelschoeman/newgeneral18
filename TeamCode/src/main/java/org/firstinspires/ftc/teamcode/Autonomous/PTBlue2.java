@@ -18,7 +18,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.CRServo;
 
+import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
+import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 
 import java.util.Locale;
 
@@ -110,7 +115,47 @@ public class PTBlue2 extends LinearOpMode {
         final double SCALE_FACTOR = 255;
         colorServo.setPosition(.95);
         //do stuff here!
+
+        //ava started here:
+
+        telemetry.addLine("Starting Vuforia...");
+        telemetry.update();
+
+        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
+        VuforiaLocalizer.Parameters parameters = new VuforiaLocalizer.Parameters(cameraMonitorViewId);
+        parameters.vuforiaLicenseKey = "AR+iLgj/////AAAAmS9bkSnmY0kFlliVvKlHO6srskUOSAet/+7CxNX1r58PDBPcdJ1Oez2dp8+Sou9eNRa1xwyAe8axEgE9MkAaD9JcOBlOJMBW3ThvB1/2ycv7OQga4kuIgOtQ3w5It14k9P7hVU9aVpXAZFrkoykwDNumaT08hmFk+cJtFznF0CprLnGNyQ8wuLB7hBqx5xWzt6JPEdF5Pn3eNgEyCR76MhegCvD+V5i+D+YojEUgrt7aUH7SiEQJDcr6RFilzIGjpxN9r7j7xfp7yki3D1HzidnXSavjEEzn13dHKmdu9wfdyY9+SvCTUEPDwklWiRC9Bj1rVMRR4MBbPS3m2ClknaDqKHNxIjBfPaH4MP0Tdcdg ";
+        parameters.cameraDirection = VuforiaLocalizer.CameraDirection.BACK;
+
+        VuforiaLocalizer vuforia = ClassFactory.createVuforiaLocalizer(parameters);
+        VuforiaTrackables relicTrackables = vuforia.loadTrackablesFromAsset("RelicVuMark");
+        VuforiaTrackable relicTemplate = relicTrackables.get(0);
+
+        relicTrackables.activate();
+
+        telemetry.addLine("Ready to go!");
+        telemetry.update();
+
         waitForStart();
+
+        RelicRecoveryVuMark vuMark = RelicRecoveryVuMark.from(relicTemplate);
+        int vuMarkAttempt = 1;
+        while(vuMark == RelicRecoveryVuMark.UNKNOWN && vuMarkAttempt <= 20) {
+            vuMark = RelicRecoveryVuMark.from(relicTemplate);
+            telemetry.addData("Cipher", "Not visible, waiting " + (((20-vuMarkAttempt))/10) + " more seconds.");
+            telemetry.addData("VuMark Detection", vuMark);
+            telemetry.update();
+            sleep(100);
+            vuMarkAttempt++;
+        }
+        telemetry.addData("VuMark", "%s visible", vuMark);
+        telemetry.update();
+
+        //ava ended here
+
+        /*
+        AVA NOTES: Inside your while (opModeIsActive()), when you start the code that takes the robot to one of the columns,
+        use if (vuMark == RelicRecoveryVuMark.CENTER) etc. to direct the robot to the correct column.
+         */
 
         while (opModeIsActive()) {
 
