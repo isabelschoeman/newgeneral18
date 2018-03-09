@@ -198,28 +198,6 @@ public class PTBlue2 extends LinearOpMode {
                 delay(100);
                 colorServo.setPosition(0.95);
                 turnLeft(.4, 150);
-                delay(800);
-                moveForward(.4,750);
-                delay(800);
-                strafeRight(.95, 500);
-                delay(300);
-                turnRight(.4, 1700);
-                Servo1.setPosition(0.9);
-                delay(500);
-                moveBackward(.4,500);
-                delay(250);
-                moveForward(.4, 300);
-                delay(250);
-                moveBackward(.4,500);
-                delay(250);
-                moveForward(.4, 300);
-                Servo1.setPosition(0.3);
-
-
-                //delay(250);
-                //moveForward(.4, 350);
-                //delay(500);
-                //moveBackward(.4,250);
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
@@ -227,27 +205,32 @@ public class PTBlue2 extends LinearOpMode {
                 delay(100);
                 colorServo.setPosition(.95);
                 turnRight(.4, 150);
-                delay(800);
-                moveForward(.4,750);
-                delay(500);
-                strafeRight(.95, 500);
-                delay(500);
-                turnRight(.4, 1700);
-                delay(500);
-                Servo1.setPosition(0.9);
-                moveBackward(.4,1000);
-                delay(250);
-                moveForward(.4, 300);
-                delay(250);
-                moveBackward(.4,500);
-                delay(250);
-                moveForward(.4, 300);
-                Servo1.setPosition(0.3);
-                //delay(250);
-                //moveForward(.4, 350);
-                //delay(500);
-                //moveBackward(.4,250);
             }
+
+            delay(800);
+            moveForward(.4,750);
+            delay(800);
+            if(vuMark == RelicRecoveryVuMark.LEFT){
+                strafeRight(.95, 400);
+            }
+            else if(vuMark == RelicRecoveryVuMark.CENTER){
+                strafeRight(.95, 500);
+            }
+            else{
+                strafeRight(.95, 600);
+            }
+            delay(300);
+            turnRight(.4, 1700);
+            Servo1.setPosition(0.9);
+            delay(500);
+            moveBackward(.4,500);
+            delay(250);
+            moveForward(.4, 300);
+            delay(250);
+            moveBackward(.4,500);
+            delay(250);
+            moveForward(.4, 300);
+            Servo1.setPosition(0.3);
 
             break;
 

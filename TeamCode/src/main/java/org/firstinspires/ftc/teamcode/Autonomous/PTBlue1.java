@@ -198,56 +198,7 @@ public class PTBlue1 extends LinearOpMode {
                 turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0.95);
-                delay(100);
                 turnLeft(.4, 150);
-                delay(500);
-                moveForward(.4,1000);
-                delay(500);
-                turnRight(.4, 1000);
-                delay(500);
-                //strafeLeft(.95, 250);
-                Servo1.setPosition(0.9);
-                delay(500);
-                moveBackward(.4,750);
-                delay(250);
-                moveForward(.4,250);
-                delay(250);
-                moveBackward(.4,750);
-                delay(250);
-                moveForward(.4,250);
-                delay(250);
-                Servo1.setPosition(0.3);
-
-//                strafeLeft(.95,1200);
-//                delay(500);
-//                moveForward(.4, 1750);
-//                delay(500);
-//                moveBackward(.4, 200);
-//                nom(-.9);
-//                delay(500);
-//                moveForward(.4, 700);
-//                nom(.9);
-//                delay(500);
-//                moveBackward(.4, 1700);
-//                delay(1700);
-//                strafeLeft(.6, 200);
-//                delay(500);
-//                Servo1.setPosition(0.5);
-//                delay(500);
-//                Servo1.setPosition(0.9);
-//                delay(500);
-//                moveBackward(.4, 750);
-//                delay(500);
-//                moveForward(.4, 250);
-//                Servo1.setPosition(.3);
-//                delay(500);
-
-
-
-                //delay(250);
-                //moveForward(.4, 350);
-                //delay(500);
-                //moveBackward(.4,250);
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
@@ -256,49 +207,33 @@ public class PTBlue1 extends LinearOpMode {
                 colorServo.setPosition(0.95);
                 delay(100);
                 turnRight(.4, 150);
-                delay(500);
-                moveForward(.4,1000);
-                delay(500);
-                turnRight(.4, 1000);
-                delay(500);
-                //strafeLeft(.95, 250);
-                Servo1.setPosition(0.9);
-                delay(500);
-                moveBackward(.4,750);
-                delay(500);
-                moveForward(.4,250);
-                delay(250);
-                moveBackward(.4,750);
-                delay(250);
-                moveForward(.4,250);
-                Servo1.setPosition(.3);
-                delay(500);
-
-//                strafeLeft(.6,1200);
-//                delay(500);
-//                moveForward(.4, 1750);
-//                delay(500);
-//                moveBackward(.4, 200);
-//                nom(-.9);
-//                delay(500);
-//                moveForward(.4, 700);
-//                nom(.9);
-//                delay(500);
-//                moveBackward(.4, 1700);
-//                delay(1700);
-//                strafeLeft(.95, 200);
-//                delay(500);
-//                Servo1.setPosition(0.5);
-//                delay(500);
-//                Servo1.setPosition(0.9);
-//                delay(500);
-//                moveBackward(.4, 750);
-//                delay(500);
-//                moveForward(.4,250);
-//                Servo1.setPosition(.3);
-//                delay(500);
-
             }
+
+            delay(500);
+            if(vuMark == RelicRecoveryVuMark.LEFT){
+                moveForward(.95, 1100);
+            }
+            else if(vuMark == RelicRecoveryVuMark.CENTER){
+                strafeRight(.95, 1000);
+            }
+            else{
+                strafeRight(.95, 900);
+            }
+            delay(500);
+            turnRight(.4, 1000);
+            delay(500);
+            //strafeLeft(.95, 250);
+            Servo1.setPosition(0.9);
+            delay(500);
+            moveBackward(.4,750);
+            delay(250);
+            moveForward(.4,250);
+            delay(250);
+            moveBackward(.4,750);
+            delay(250);
+            moveForward(.4,250);
+            delay(250);
+            Servo1.setPosition(0.3);
 
             break;
 
