@@ -222,13 +222,13 @@ public class PTRed2 extends LinearOpMode {
                 strafeRight(.95, 600);
             }
             delay(500);
-            Servo1.setPosition(0.9);
+            Servo1.setPosition(0.5);
             delay(500);
             moveBackward(.4,1000);
             delay(250);
             moveForward(.4, 300);
             delay(250);
-            Servo1.setPosition(0.3);
+            Servo1.setPosition(0.15);
             delay(250);
             moveBackward(.4,400);
             delay(250);

@@ -189,7 +189,7 @@ public class Ava extends OpMode {
 
 
         if (gamepad2.b) {
-            Servo1.setPosition(0.1);
+            Servo1.setPosition(0.15);
             //Servo2.setPosition(0.3);
         } else if (gamepad2.x) {
             Servo1.setPosition(0.3);

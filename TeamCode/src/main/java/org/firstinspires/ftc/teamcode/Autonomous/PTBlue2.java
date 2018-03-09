@@ -221,7 +221,7 @@ public class PTBlue2 extends LinearOpMode {
             }
             delay(300);
             turnRight(.4, 1700);
-            Servo1.setPosition(0.9);
+            Servo1.setPosition(0.5);
             delay(500);
             moveBackward(.4,500);
             delay(250);
@@ -230,7 +230,7 @@ public class PTBlue2 extends LinearOpMode {
             moveBackward(.4,500);
             delay(250);
             moveForward(.4, 300);
-            Servo1.setPosition(0.3);
+            Servo1.setPosition(0.15);
 
             break;
 

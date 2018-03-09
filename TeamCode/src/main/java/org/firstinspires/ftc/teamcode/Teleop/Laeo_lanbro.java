@@ -189,8 +189,8 @@ public class Laeo_lanbro extends OpMode{
         //Servo Stuff
 
 
-        if (gamepad1.b) {
-            Servo1.setPosition(0.1);
+        if (gamepad1.a) {
+            Servo1.setPosition(0.15);
             //Servo2.setPosition(0.3);
         } else if (gamepad1.x) {
             Servo1.setPosition(0.3);
@@ -198,7 +198,7 @@ public class Laeo_lanbro extends OpMode{
         } else if (gamepad1.y) {
             Servo1.setPosition(0.5);
             //Servo2.setPosition(0.7);
-        } else if (gamepad1.a) {
+        } else if (gamepad1.b) {
             Servo1.setPosition(0.4);
             //Servo2.setPosition(0.7);
         }else{
@@ -207,9 +207,9 @@ public class Laeo_lanbro extends OpMode{
 
         //lift
 
-        if (gamepad1.dpad_up) {
+        if (gamepad1.left_trigger >.2 && gamepad1.left_bumper) {
             Pulley.setPower(.9);
-        } else if (gamepad1.dpad_down) {
+        } else if (gamepad1.left_trigger >.2) {
             Pulley.setPower(-.9);
         } else {
             Pulley.setPower(0);
