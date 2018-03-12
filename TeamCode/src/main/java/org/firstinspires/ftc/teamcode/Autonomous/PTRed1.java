@@ -113,7 +113,7 @@ public class PTRed1 extends LinearOpMode {
         // sometimes it helps to multiply the raw RGB values with a scale factor
         // to amplify/attentuate the measured values.
         final double SCALE_FACTOR = 255;
-        colorServo.setPosition(.95);
+        colorServo.setPosition(0);
         //do stuff here!
 
         //ava started here:
@@ -166,7 +166,7 @@ public class PTRed1 extends LinearOpMode {
            // delay(500);
            // Pulley.setPower(0);
 
-            colorServo.setPosition(0);
+            colorServo.setPosition(.95);
             //nom(.9);
 
             int red = 0;
@@ -196,36 +196,38 @@ public class PTRed1 extends LinearOpMode {
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 150);
-                delay(100);
-                colorServo.setPosition(0.95);
                 turnRight(.4, 150);
+                delay(100);
+                colorServo.setPosition(0);
+                turnLeft(.4, 170);
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 150);
-                delay(100);
-                colorServo.setPosition(0.95);
                 turnLeft(.4, 150);
+                delay(100);
+                colorServo.setPosition(0);
+                turnRight(.4, 150);
             }
+
 
             delay(800);
-            moveBackward(.4,1000);
-            turnRight(.4,750);
-            delay(500);
+            moveBackward(.4,500);
+            delay(1000);
+            delay(1000);
             if(vuMark == RelicRecoveryVuMark.LEFT){
-                strafeRight(.95, 150);
+                moveBackward(.4, 1300);
             }
             else if(vuMark == RelicRecoveryVuMark.CENTER){
-                strafeRight(.95, 250);
+                moveBackward(.4, 900);
             }
             else{
-                strafeRight(.95, 350);
+                moveBackward(.4, 750);
             }
 
             delay(250);
+            turnRight(.4, 1100);
+            delay(500);
             Servo1.setPosition(0.5);
-            delay(250);
             moveBackward(.4,500);
             delay(500);
             moveForward(.4,250);
@@ -305,9 +307,9 @@ public class PTRed1 extends LinearOpMode {
     }
 
     public void strafeRight(double power, int time){
-        FrontLeft.setPower(-power);
+        FrontLeft.setPower(power);
         FrontRight.setPower(-power);
-        BackLeft.setPower(power);
+        BackLeft.setPower(-power);
         BackRight.setPower(power);
         delay(time);
         FrontLeft.setPower(0);
@@ -316,9 +318,9 @@ public class PTRed1 extends LinearOpMode {
         BackRight.setPower(0);
     }
     public void strafeLeft(double power, int time){
-        FrontLeft.setPower(power);
+        FrontLeft.setPower(-power);
         FrontRight.setPower(power);
-        BackLeft.setPower(-power);
+        BackLeft.setPower(power);
         BackRight.setPower(-power);
         delay(time);
         FrontLeft.setPower(0);

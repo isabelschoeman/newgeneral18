@@ -113,7 +113,7 @@ public class PTBlue2 extends LinearOpMode {
         // sometimes it helps to multiply the raw RGB values with a scale factor
         // to amplify/attentuate the measured values.
         final double SCALE_FACTOR = 255;
-        colorServo.setPosition(.95);
+        colorServo.setPosition(0);
         //do stuff here!
 
         //ava started here:
@@ -165,7 +165,7 @@ public class PTBlue2 extends LinearOpMode {
             // delay(500);
             // Pulley.setPower(0);
 
-            colorServo.setPosition(0);
+            colorServo.setPosition(.95);
 
             int red = 0;
             int blue = 0;
@@ -194,16 +194,16 @@ public class PTBlue2 extends LinearOpMode {
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 150);
-                delay(100);
-                colorServo.setPosition(0.95);
                 turnLeft(.4, 150);
+                delay(100);
+                colorServo.setPosition(0);
+                turnRight(.4, 150);
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
                 turnLeft(.4, 150);
                 delay(100);
-                colorServo.setPosition(.95);
+                colorServo.setPosition(0);
                 turnRight(.4, 150);
             }
 
@@ -211,13 +211,13 @@ public class PTBlue2 extends LinearOpMode {
             moveForward(.4,750);
             delay(800);
             if(vuMark == RelicRecoveryVuMark.LEFT){
-                strafeRight(.95, 400);
+                strafeRight(.65, 600);
             }
             else if(vuMark == RelicRecoveryVuMark.CENTER){
-                strafeRight(.95, 500);
+                strafeRight(.65, 750);
             }
             else{
-                strafeRight(.95, 600);
+                strafeRight(.65, 900);
             }
             delay(300);
             turnRight(.4, 1700);
@@ -241,7 +241,6 @@ public class PTBlue2 extends LinearOpMode {
 
         colorSensorCode(SCALE_FACTOR, hsvValues);
         strafeRight(0,0);
-
 
     }
 
@@ -300,9 +299,9 @@ public class PTBlue2 extends LinearOpMode {
     }
 
     public void strafeRight(double power, int time){
-        FrontLeft.setPower(-power);
+        FrontLeft.setPower(power);
         FrontRight.setPower(-power);
-        BackLeft.setPower(power);
+        BackLeft.setPower(-power);
         BackRight.setPower(power);
         delay(time);
         FrontLeft.setPower(0);
@@ -311,9 +310,9 @@ public class PTBlue2 extends LinearOpMode {
         BackRight.setPower(0);
     }
     public void strafeLeft(double power, int time){
-        FrontLeft.setPower(power);
+        FrontLeft.setPower(-power);
         FrontRight.setPower(power);
-        BackLeft.setPower(-power);
+        BackLeft.setPower(power);
         BackRight.setPower(-power);
         delay(time);
         FrontLeft.setPower(0);

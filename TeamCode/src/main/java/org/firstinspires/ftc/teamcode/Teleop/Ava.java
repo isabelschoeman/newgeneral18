@@ -26,12 +26,12 @@ public class Ava extends OpMode {
     private DcMotor Pulley = null;
     private DcMotor NomLeft = null;
     private DcMotor NomRight = null;
-    //private DcMotor ThiccBoiPlacer = null;
+    private DcMotor relicMotor = null;
     private Servo Servo1 = null;
     //private Servo Servo2 = null;
     //private Servo ServoRelicRelease = null;
-    //private Servo ServoHand = null;
-    //private Servo ServoElbow = null;
+    private Servo handServo = null;
+    private Servo elbowServo = null;
     //private DcMotor ThiccBoiRetriever= null;
     private Servo colorServo = null;
     double startTime = runtime.milliseconds();
@@ -50,13 +50,13 @@ public class Ava extends OpMode {
         Pulley = hardwareMap.get(DcMotor.class, "Pulley");
         NomLeft = hardwareMap.get(DcMotor.class, "NomLeft");
         NomRight = hardwareMap.get(DcMotor.class, "NomRight");
-        //ThiccBoiPlacer = hardwareMap.get(DcMotor.class, "ThiccBoiPlacer");
+        relicMotor = hardwareMap.get(DcMotor.class, "relicMotor");
         //ThiccBoiRetriever = hardwareMap.get(DcMotor.class, "ThiccBoiRetriever");
         Servo1 = hardwareMap.get(Servo.class, "Servo1");
         //Servo2 = hardwareMap.get(Servo.class, "Servo2");
         //ServoRelicRelease = hardwareMap.get(Servo.class, "ServoRelicRelease");
-        //ServoHand = hardwareMap.get(Servo.class, "ServoHand");
-        //ServoElbow = hardwareMap.get(Servo.class, "ServoElbow");
+        handServo = hardwareMap.get(Servo.class, "handServo");
+        elbowServo = hardwareMap.get(Servo.class, "elbowServo");
         colorServo = hardwareMap.get(Servo.class, "colorServo");
 
 
@@ -69,7 +69,7 @@ public class Ava extends OpMode {
         Pulley.setDirection(DcMotor.Direction.FORWARD);
         NomLeft.setDirection(DcMotor.Direction.FORWARD);
         NomRight.setDirection(DcMotor.Direction.REVERSE);
-        //ThiccBoiPlacer.setDirection(DcMotor.Direction.FORWARD);
+        relicMotor.setDirection(DcMotor.Direction.FORWARD);
         //ThiccBoiRetriever.setDirection(DcMotor.Direction.FORWARD);
 
         FrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -77,7 +77,7 @@ public class Ava extends OpMode {
         FrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         BackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         Pulley.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        //ThiccBoiRetriever.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        relicMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //ThiccBoiPlacer.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         // Tell the driver that initialization is complete.
@@ -108,9 +108,9 @@ public class Ava extends OpMode {
 
         if (gamepad1.right_stick_x < -threshold || gamepad1.right_stick_x > threshold) {
             if(gamepad1.left_bumper){
-                FrontLeft.setPower(-gamepad1.right_stick_x/2);
+                FrontLeft.setPower(gamepad1.right_stick_x/2);
                 FrontRight.setPower(-gamepad1.right_stick_x/2);
-                BackLeft.setPower(gamepad1.right_stick_x/2);
+                BackLeft.setPower(-gamepad1.right_stick_x/2);
                 BackRight.setPower(gamepad1.right_stick_x/2);
             }
             else{
@@ -189,7 +189,7 @@ public class Ava extends OpMode {
 
 
         if (gamepad2.b) {
-            Servo1.setPosition(0.15);
+            Servo1.setPosition(0.2);
             //Servo2.setPosition(0.3);
         } else if (gamepad2.x) {
             Servo1.setPosition(0.3);
@@ -207,69 +207,45 @@ public class Ava extends OpMode {
             //lift
 
         if (gamepad2.dpad_up) {
-            Pulley.setPower(.9);
+            Pulley.setPower(.5);
         } else if (gamepad2.dpad_down) {
-            Pulley.setPower(-.9);
+            Pulley.setPower(-.5);
         } else {
             Pulley.setPower(0);
         }
 
             //relic placer
-/*
-        if(gamepad1.right_trigger > .4){
-            ThiccBoiPlacer.setPower(.55);
-            ThiccBoiRetriever.setPower(.9);
+
+        if(gamepad1.dpad_up){
+            relicMotor.setPower(.8);
         }
-        else if(gamepad1.left_trigger > .4){
-            ThiccBoiPlacer.setPower(-.9);
-            ThiccBoiRetriever.setPower(-.55);
+        else if(gamepad1.dpad_down){
+            relicMotor.setPower(-.8);
         }
         else{
-            ThiccBoiPlacer.setPower(0);
-            ThiccBoiRetriever.setPower(0);
+            relicMotor.setPower(0);
         }
 
-        //relic release
-        if(gamepad1.a){
-            ServoRelicRelease.setPosition(1.00);
+        //relic elbow
+        if(gamepad1.y){
+            elbowServo.setPosition(.9);
+        } else if(gamepad1.a){
+            elbowServo.setPosition(.1);
         }
-        else if(gamepad1.y){
-            ServoRelicRelease.setPosition(0.00);
+
+        //relic hand
+        if(gamepad1.x){
+            handServo.setPosition(.9);
         }
-        else{
-            ServoRelicRelease.setPosition(0.5);
-        }
-        //Relic total
-        //down and open
-        if(gamepad1.a){
-            ServoHand.setPosition(.65);
-            ServoElbow.setPosition(.25);
-        }
-        //up and open
         else if(gamepad1.b){
-            ServoHand.setPosition(.9);
-            ServoElbow.setPosition(.9);
-        }
-        //up and closed
-        else if(gamepad1.x){
-            ServoHand.setPosition(0.05);
-            ServoElbow.setPosition(.9);
-        }
-        //down and closed
-        else if(gamepad1.y){
-            ServoHand.setPosition(.05);
-            ServoElbow.setPosition(.3);
+            handServo.setPosition(.45);
         }
 
+        telemetry.addData("handServo", handServo.getPosition());
+        telemetry.addData("elbowServo", elbowServo.getPosition());
         //jewel servo
-        if(gamepad1.dpad_down){
-            colorServo.setPosition(.1);
-        }
-        else {
-            colorServo.setPosition(0.95);
-        }
-        */
         colorServo.setPosition(0.5);
+
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
