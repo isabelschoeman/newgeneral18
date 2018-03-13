@@ -201,26 +201,26 @@ public class PTBlue2 extends LinearOpMode {
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 150);
+                turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0);
-                turnRight(.4, 150);
+                turnLeft(.4, 150);
             }
 
             delay(800);
-            moveForward(.4,750);
+            moveForward(.4,1000);
             delay(800);
             if(vuMark == RelicRecoveryVuMark.LEFT){
                 strafeRight(.65, 600);
             }
             else if(vuMark == RelicRecoveryVuMark.CENTER){
-                strafeRight(.65, 750);
+                strafeRight(.65, 950);
             }
             else{
-                strafeRight(.65, 900);
+                strafeRight(.65, 1300);
             }
             delay(300);
-            turnRight(.4, 1700);
+            turnRight(.4, 2000);
             Servo1.setPosition(0.5);
             delay(500);
             moveBackward(.4,500);

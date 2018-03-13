@@ -225,7 +225,7 @@ public class PTRed1 extends LinearOpMode {
             }
 
             delay(250);
-            turnRight(.4, 1100);
+            turnRight(.4, 975);
             delay(500);
             Servo1.setPosition(0.5);
             moveBackward(.4,500);

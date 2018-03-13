@@ -113,7 +113,7 @@ public class PTRed2 extends LinearOpMode {
         // sometimes it helps to multiply the raw RGB values with a scale factor
         // to amplify/attentuate the measured values.
         final double SCALE_FACTOR = 255;
-        colorServo.setPosition(.95);
+        colorServo.setPosition(0);
         //do stuff here!
 
         //ava started here:
@@ -166,7 +166,7 @@ public class PTRed2 extends LinearOpMode {
             // delay(500);
             // Pulley.setPower(0);
 
-            colorServo.setPosition(0);
+            colorServo.setPosition(.95);
 
             int red = 0;
             int blue = 0;
@@ -197,7 +197,7 @@ public class PTRed2 extends LinearOpMode {
                 telemetry.update();
                 turnRight(.4, 150);
                 delay(100);
-                colorServo.setPosition(0.95);
+                colorServo.setPosition(0);
                 turnLeft(.4, 150);
 
             } else {
@@ -205,26 +205,26 @@ public class PTRed2 extends LinearOpMode {
                 telemetry.update();
                 turnLeft(.4, 150);
                 delay(100);
-                colorServo.setPosition(0.95);
+                colorServo.setPosition(0);
                 turnRight(.4, 150);
             }
             delay(800);
-            moveBackward(.4,1000);
+            moveBackward(.4,850);
             delay(250);
 
             if(vuMark == RelicRecoveryVuMark.LEFT){
-                strafeRight(.65, 600);
-            }
-            else if(vuMark == RelicRecoveryVuMark.CENTER){
                 strafeRight(.65, 750);
             }
+            else if(vuMark == RelicRecoveryVuMark.CENTER){
+                strafeRight(.65, 550);
+            }
             else{
-                strafeRight(.65, 900);
+                strafeRight(.65, 225);
             }
             delay(500);
             Servo1.setPosition(0.5);
             delay(500);
-            moveBackward(.4,1000);
+            moveBackward(.4,500);
             delay(250);
             moveForward(.4, 300);
             delay(250);
