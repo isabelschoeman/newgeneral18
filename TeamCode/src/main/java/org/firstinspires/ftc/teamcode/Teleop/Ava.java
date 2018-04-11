@@ -28,6 +28,8 @@ public class Ava extends OpMode {
     private DcMotor NomRight = null;
     private DcMotor relicMotor = null;
     private Servo Servo1 = null;
+    private Servo jewelTwister = null;
+    private Servo backPlate = null;
     //private Servo Servo2 = null;
     //private Servo ServoRelicRelease = null;
     private Servo handServo = null;
@@ -35,6 +37,7 @@ public class Ava extends OpMode {
     //private DcMotor ThiccBoiRetriever= null;
     private Servo colorServo = null;
     double startTime = runtime.milliseconds();
+    double relicPosition = .5;
 
     @Override
     public void init() {
@@ -51,6 +54,8 @@ public class Ava extends OpMode {
         NomLeft = hardwareMap.get(DcMotor.class, "NomLeft");
         NomRight = hardwareMap.get(DcMotor.class, "NomRight");
         relicMotor = hardwareMap.get(DcMotor.class, "relicMotor");
+        jewelTwister = hardwareMap.get(Servo.class, "jewelTwister");
+        backPlate = hardwareMap.get(Servo.class, "backPlate");
         //ThiccBoiRetriever = hardwareMap.get(DcMotor.class, "ThiccBoiRetriever");
         Servo1 = hardwareMap.get(Servo.class, "Servo1");
         //Servo2 = hardwareMap.get(Servo.class, "Servo2");
@@ -104,7 +109,7 @@ public class Ava extends OpMode {
 
     public void loop() {
         double threshold = 0.5;
-        double slowNumber = 0.75;
+        double slowNumber = 0.95;
 
         if (gamepad1.right_stick_x < -threshold || gamepad1.right_stick_x > threshold) {
             if(gamepad1.left_bumper){
@@ -169,19 +174,18 @@ public class Ava extends OpMode {
         }
 
         //nom motors
-        double nomPower = .9;
+        double nomPower = .95;
         if (gamepad1.right_trigger > .2) {
-            NomRight.setPower(nomPower);
-            NomLeft.setPower(nomPower);
-            //NomLeft.setPower(.9);
-        } else if (gamepad1.right_bumper) {
-            //NomRight.setPower(-.9);
-            NomLeft.setPower(-nomPower);
             NomRight.setPower(-nomPower);
+            NomLeft.setPower(-nomPower);
         }
-        else{
+        else if(gamepad1.left_trigger >.2){
             NomRight.setPower(0);
             NomLeft.setPower(0);
+        }
+        else{
+            NomRight.setPower(nomPower);
+            NomLeft.setPower(nomPower);
         }
 
 
@@ -189,67 +193,76 @@ public class Ava extends OpMode {
 
 
         if (gamepad2.b) {
-            Servo1.setPosition(0.2);
+            Servo1.setPosition(0.18);
             //Servo2.setPosition(0.3);
         } else if (gamepad2.x) {
-            Servo1.setPosition(0.3);
+            Servo1.setPosition(0.30);
             //Servo2.setPosition(0.6);
         } else if (gamepad2.y) {
             Servo1.setPosition(0.5);
             //Servo2.setPosition(0.7);
         } else if (gamepad2.a) {
-            Servo1.setPosition(0.4);
+            Servo1.setPosition(0.25);
             //Servo2.setPosition(0.7);
         }else{
 
         }
 
-            //lift
+
+        //back plate
+        if(gamepad1.a){
+            backPlate.setPosition(.9);
+        }
+        else{
+            backPlate.setPosition(.3);
+        }
+
+        //lift
 
         if (gamepad2.dpad_up) {
-            Pulley.setPower(.5);
+            Pulley.setPower(-.95);
         } else if (gamepad2.dpad_down) {
-            Pulley.setPower(-.5);
+            Pulley.setPower(.95);
         } else {
             Pulley.setPower(0);
         }
 
-            //relic placer
+        //relic placer
 
-        if(gamepad1.dpad_up){
-            relicMotor.setPower(.8);
-        }
-        else if(gamepad1.dpad_down){
-            relicMotor.setPower(-.8);
+        if(gamepad2.right_stick_y > .4){
+            relicMotor.setPower(-.6);
+        }else if(gamepad2.right_stick_y < -.4){
+            relicMotor.setPower(.6);
         }
         else{
             relicMotor.setPower(0);
         }
 
         //relic elbow
-        if(gamepad1.y){
-            elbowServo.setPosition(.9);
-        } else if(gamepad1.a){
-            elbowServo.setPosition(.1);
+        if(gamepad2.right_bumper){
+            elbowServo.setPosition(.90);
+        }
+        else if(gamepad2.left_bumper) {
+            elbowServo.setPosition(.5);
         }
 
         //relic hand
-        if(gamepad1.x){
+        if(gamepad2.right_trigger>.4){
             handServo.setPosition(.9);
         }
-        else if(gamepad1.b){
+        else if(gamepad2.left_trigger>.4){
             handServo.setPosition(.45);
         }
 
         telemetry.addData("handServo", handServo.getPosition());
         telemetry.addData("elbowServo", elbowServo.getPosition());
         //jewel servo
-        colorServo.setPosition(0.5);
+        colorServo.setPosition(0.9);
 
 
-            // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.update();
+        // Show the elapsed game time and wheel power.
+        telemetry.addData("Status", "Run Time: " + runtime.toString());
+        telemetry.update();
     /*
      * Code to run ONCE after the driver hits STOP
      */

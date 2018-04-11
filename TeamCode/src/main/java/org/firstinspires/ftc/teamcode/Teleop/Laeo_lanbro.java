@@ -109,15 +109,15 @@ public class Laeo_lanbro extends OpMode{
 
         if (gamepad1.right_stick_x < -threshold || gamepad1.right_stick_x > threshold) {
             if(gamepad1.left_bumper){
-                FrontLeft.setPower(-gamepad1.right_stick_x/2);
+                FrontLeft.setPower(gamepad1.right_stick_x/2);
                 FrontRight.setPower(-gamepad1.right_stick_x/2);
-                BackLeft.setPower(gamepad1.right_stick_x/2);
+                BackLeft.setPower(-gamepad1.right_stick_x/2);
                 BackRight.setPower(gamepad1.right_stick_x/2);
             }
             else{
-                FrontLeft.setPower(-gamepad1.right_stick_x);
+                FrontLeft.setPower(gamepad1.right_stick_x);
                 FrontRight.setPower(-gamepad1.right_stick_x);
-                BackLeft.setPower(gamepad1.right_stick_x);
+                BackLeft.setPower(-gamepad1.right_stick_x);
                 BackRight.setPower(gamepad1.right_stick_x);
             }
 
@@ -170,7 +170,7 @@ public class Laeo_lanbro extends OpMode{
         }
 
         //nom motors
-        double nomPower = .9;
+        double nomPower = .65;
         if (gamepad1.right_trigger > .2) {
             NomRight.setPower(nomPower);
             NomLeft.setPower(nomPower);
@@ -189,16 +189,16 @@ public class Laeo_lanbro extends OpMode{
         //Servo Stuff
 
 
-        if (gamepad1.a) {
-            Servo1.setPosition(0.15);
+        if (gamepad1.b) {
+            Servo1.setPosition(0.25);
             //Servo2.setPosition(0.3);
         } else if (gamepad1.x) {
-            Servo1.setPosition(0.3);
+            Servo1.setPosition(0.35);
             //Servo2.setPosition(0.6);
         } else if (gamepad1.y) {
             Servo1.setPosition(0.5);
             //Servo2.setPosition(0.7);
-        } else if (gamepad1.b) {
+        } else if (gamepad1.a) {
             Servo1.setPosition(0.4);
             //Servo2.setPosition(0.7);
         }else{
@@ -208,9 +208,9 @@ public class Laeo_lanbro extends OpMode{
         //lift
 
         if (gamepad1.left_trigger >.2 && gamepad1.left_bumper) {
-            Pulley.setPower(.9);
-        } else if (gamepad1.left_trigger >.2) {
             Pulley.setPower(-.9);
+        } else if (gamepad1.left_trigger >.2) {
+            Pulley.setPower(.9);
         } else {
             Pulley.setPower(0);
         }

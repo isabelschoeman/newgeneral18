@@ -165,7 +165,7 @@ public class PTBlue1 extends LinearOpMode {
             // delay(500);
             // Pulley.setPower(0);
 
-            colorServo.setPosition(.95);
+            colorServo.setPosition(.99);
             //nom(.9);
 
             int red = 0;
@@ -189,40 +189,60 @@ public class PTBlue1 extends LinearOpMode {
             telemetry.addData("BLUE", blue);
             telemetry.update();
 
+            boolean redJewel = true;
+
 
 
             double jewelturntime = getRuntime();
             if (red > blue) {
                 telemetry.addData("Red Wins!", colorSensor.red());
                 telemetry.update();
-                turnLeft(.4, 150);
+                turnRight(.4, 150);
                 delay(100);
                 colorServo.setPosition(0);
-                turnRight(.4, 150);
+                turnLeft(.4, 150);
+                redJewel = true;
             } else {
                 telemetry.addData("Blue Wins!", colorSensor.red());
                 telemetry.update();
-                turnRight(.4, 150);
+                turnLeft(.4, 150);
                 delay(100);
                 colorServo.setPosition(0);
                 delay(100);
-                turnLeft(.4, 150);
+                turnRight(.4, 150);
+                redJewel=false;
             }
 
             delay(500);
-            moveForward(.4, 500);
+            moveForward(.4, 600);
             delay(1000);
             strafeRight(.95, 200);
             delay(1000);
             if(vuMark == RelicRecoveryVuMark.LEFT){
-                moveForward(.4, 600);
+                if(redJewel=true){
+                    moveBackward(.4, 825); //go a little less than necessary
+                }
+                else {
+                    moveBackward(.4, 950); //go a little less than necessary
+                }
             }
             else if(vuMark == RelicRecoveryVuMark.CENTER){
-                moveForward(.4, 900);
+                if(redJewel=true){
+                    moveBackward(.4, 850); //go a little less than necessary
+                }
+                else {
+                    moveBackward(.4, 800); //go a little less than necessary
+                }
             }
-            else{
-                moveForward(.4, 1300);
+            else {
+                if (redJewel = true) {
+                    moveBackward(.4, 1050); //go a little more than necessary
+                }
+                else{
+                    moveBackward(.4, 1000); //go a little more than necessary
+                }
             }
+
             delay(500);
             turnRight(.4, 1100);
             delay(500);
@@ -235,6 +255,15 @@ public class PTBlue1 extends LinearOpMode {
             delay(250);
             moveBackward(.4,750);
             delay(250);
+            if(vuMark == RelicRecoveryVuMark.LEFT){
+                turnLeft(.4, 250);
+            }
+            else if(vuMark == RelicRecoveryVuMark.CENTER){
+                turnRight(.4, 250);
+            }
+            else{
+                turnRight(.4, 250);
+            }
             moveForward(.4,250);
             delay(250);
             Servo1.setPosition(0.15);
